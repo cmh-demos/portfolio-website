@@ -1,0 +1,103 @@
+﻿C. Michael Harrington
+<address>
+<phone>
+<email>
+
+
+Selected Work Experience
+Lead DevOps Engineer, Dreamscape Learn, Los Angeles, CA         May 2023-August 2025
+Tech Stack: GCP (Compute Engine, Cloud Storage, IAM, Cloud Functions, Cloud Run, GKE, Cloud SQL, Pub/Sub, Cloud Monitoring, Cloud Logging, Cloud CDN, Cloud Build), VMware, KVM, Nutanix, Proxmox, Ansible, Terraform, Docker, LXC, Self-Hosted GitLab, BitBucket, Meraki, Cisco, Microsoft Windows, Ubuntu, CentOS, Python, BASH, Bourne, OneLogin, 1Password, Selenium, PowerShell, Jira, Confluence
+* Leading team of DevOps Engineers in the Enterprise Solutions department, overseeing planning, scheduling, and execution of all feature requests and system improvements to customer experience platforms.
+* Designing, implementing, and maintaining automation pipelines which build, test, distribute, and update software products.
+* Reducing the amount of time needed to take a system from the delivery dock to be ready for customers by 83%, allowing new systems to be completely configured within 24 hours of receipt of the physical hardware.
+* Designing and implementation of documentation and single source of truth system that allowed automation of all system setup and provided all steps and information necessary to manually deploy systems for offline sites.
+* Migrated a multiple server deployment to a simplified docker compose deployment which encapsulated all system services and processes while providing traceability for all infrastructure changes.
+* Implemented system of code reviews which reduced rework time by 64% in the first three months of use.
+* Instituted Jira ticketing system to track and plan work while creating roadmaps to support hardware upgrades and feature requests.
+* Oversaw SDLC from feature requests to final implementation and QA testing often managing the schedules of multiple teams to allow content and feature deliveries on short turn around schedules.
+* Consolidated organization GIT resources from 6 disparate competing offerings to a single managed GitLab.com instance.
+* Maintained 99.99% SLA for both on premise and cloud resources.
+* Reduced Helpdesk requests by 97% due to implemented automation, monitoring, and self-healing scripting as well as increased training for both customers and the support teams.
+* Lead integration efforts with all 3rd party software vendors.
+* Lead discussions with multiple vendors related to software services purchasing and management.
+* Migrated customer-facing products, first to VMware, and then to Nutanix to reduce associated system costs.
+* Reworked customer equipment delivery processes to allow for new customer onboarding to scale with business growth.
+
+
+Site Reliability Engineer, ABL Space Systems, El Segundo, CA         April 2022 - March 2023
+Tech Stack: GCP (Compute Engine, Cloud Storage, GKE, VPC, IAM), KVM, VMware, Nutanix, Juniper, Cisco Ansible, Terraform, GitLab, Concourse CI, JFrog Artifactory, Gitea, Garrit, Python, BASH, Docker/Podman, Microsoft Windows, CentOS, Ubuntu, Cockpit, MATLAB, Jira, Confluence
+* Automated vehicle software integration, testing, and deployment processes in support of the inaugural launch campaign.
+* Designed testing support racks including “Hardware In The Loop” and “Vehicle In The Loop” testing platforms; and revised designs for vehicle support racks including Ruggedized RF Racks and Ground Support Racks.
+* Traveled to various sites to install and commission support systems needed for testing and launch operations.
+* Migrated all avionics related single sign on (SSO) enabled applications from Azure Active Directory to Government Community Cloud High (GCCH).
+* Supported vehicle avionics checkouts for two vehicles including sensor mapping checks and flight computer functionality checkouts pre and post shipping.
+* Maintained all continuous integration and deployment tools including operating system and software updates, user management, testing, and backup capabilities.
+* Administered several GCP resources including Cloud Storage buckets, Compute Engine VMs and clusters, application monitoring tools, and backup services.
+* Implemented monitoring systems for all continuous integration and deployment systems as well as all vehicle and testing support racks including setting up alarms related to availability and usage.
+* Diagnosed networking problems with the corporate information technology team in support of achieving operational requirements and diagnosed communications problems with vehicles, support racks, and corporate information technology infrastructure.
+* Consulted on design of in-house software tools used for flight data processing, storage, and recovery.
+* Improved security posture of test and support racks by implementing a vault system to store passwords and decommissioning group accounts and shared passwords.
+* Created drawings outlining design of multiple support racks including power, grounding, network, and ethernet diagrams; rack layouts; power, weight, and data budgets; as well as bill of materials and logical diagrams.
+* Documented installation, backup, and recovery procedures for multiple existing systems supporting flight software development, integration, and testing.
+* Managed licensing for all software products used in flight software development; set up new user accounts and groups to provide access to avionics tools and services.
+
+
+Systems Engineer, Kleos Space SA, Colorado Springs, CO        January 2021-March 2022
+Tech Stack: Synology VMM, Meraki, Cisco, Ubuntu, Microsoft Windows, Ansible, Microk8s, Docker, MATLAB, Self-Hosted GitLab, Excel, Valispace, Python, BASH, Microsoft Project
+* Participated as the on-call subject matter expert for all launches for arming spacecrafts and installing security keys prior to launch.
+* Reviewed and shaped all design decisions related to spacecraft hardware, geolocation processing algorithms, data storage and serving mechanisms, frontend and backend APIs, system security, and network traffic shaping.
+* Designed private cloud infrastructure to support a new data as a service (DaaS) solution implementing Kubernetes, Docker, Ansible, and Terraform.
+* Designed and implemented a simple mission control system to allow operation of spacecraft clusters remotely.
+* Performed root cause analysis and troubleshooting on issues reported by customers, users, vendors to resolve issues in conjunction with systems engineering, development, and testing staff.
+* Developed scripts for process automation including automated deployment pipelines.
+* Participated in and oversaw all aspects of software development life cycle including end-to-end testing, implementation, and integration through all phases of software releases for the DaaS solution, flight software, and mission control software.
+* Oversaw generation and acceptance of all documentation produced and distributed by Kleos related to all software, vendor submissions, and flight hardware; oversaw configuration control of documents released externally.
+* Produced technical notes and content for sales fliers used during trade shows and conventions.
+* Mentored junior team members in organization standards related to programming and document generation; consulted on changes to corporate software and document writing guidelines.
+* Administered production, staging, and development Linux servers, including configuration of security posture, administration of user rights, and implementation of logging and automatic notification systems.
+* Designed and implemented validation scripts used to assess performance of vendor services against requirements and contractual agreements and ensure high quality data deliveries.
+* Interfaced and coordinated with vendors and regulatory bodies to ensure successful licensing, launch, and operation of multiple clusters of spacecrafts.
+
+
+Software Engineer, Kratos Technology and Training Solutions, Colorado Springs, CO         May 2015-July 2018
+Tech Stack: VMware, Gitea, Python, Java, C++, SVN, Razor, MS Office Products
+* Performed orbital analysis needed for satellite command and control system and served as orbital analyst subject matter expert for several launches.
+* Developed databases for orbital flight dynamics and scripted database queries and formatting for orbital analyst operations.
+* Served as software test lead for quarterly software releases; participated in and oversaw all aspects of software development life cycle including end-to-end testing, implementation, and integration through all phases of software releases and for a new software as a service (SaaS) solution.
+* Developed and analyzed test plans, procedures, and results for requirement sell-off, software regression, and issues management and validation, including test result data analysis.
+* Prepared in depth test reports covering end to end and regression testing for each software release.
+* Developed various scripts for process automation including a test issue tracker.
+* Obtained and maintained Security+ certification from CompTIA.
+* Trained new team members.
+
+
+Electrical Engineering Intern, Colorado Springs Utilities, Colorado Springs, CO         May 2019-December 2020
+Tech Stack: CAD
+* Evaluated the root cause of power plant failures, generation options for black start capabilities, and new renewable resource technologies.
+* Consulted on control system designs and designed control circuit revisions for power plant equipment.
+* Performed arc flash evaluations and led a team of two other interns on a project to perform arc flash evaluations for 88 utility sites.
+* Reviewed and implemented requirements of the National Electric Code.
+* Participated in site safety walkdowns of power generation facilities and drafted work orders to improve site safety; evaluated and recommended changes to power distribution systems to remedy safety and equipment hazards.
+* Assessed equipment age and evaluated replacement options for combined cycle gas turbine and coal fired boiler generation units as well as raw water treatment and pumping plants and wastewater pumping plants.
+* Updated power plant documentation and reviewed technical documentation for a variety of electric, water, and wastewater utility sites.
+
+
+Technical/Professional Knowledge and Skills
+* Fluent in numerous scripting and programming languages, including, but not limited to, MATLAB, Python, PowerShell, Visual Basic (VBA, VBS), PERL, C, C#, C++, Java, JavaScript, shell scripting.
+* Significant experience with version control systems (GitLab, GitHub, Razor, SVN), automation frameworks (CI/CD pipelines) and automated deployment tools (Terraform, Ansible, Chef, Puppet).
+* Experienced with computer simulation and computational modeling systems, including, but not limited to, AutoCAD, SolidWorks, Ansys, EasyPower, ETAP, Blender, Maya, STK, TensorFlow, Keras, Unity.
+* Highly skilled with legacy computer operating systems.
+* Circuit design; algorithm/process development; microcircuit design, production, and troubleshooting; interpreting, designing, troubleshooting, and implementing digital logic schematics for a variety of laboratory, test, military, utility, and commercial equipment.
+* Developing technical instruction sets, “best practices” procedures, and infographics.
+* Organizing group members on team projects; developing and maintaining project schedules and delivery deadlines; overseeing project lifecycle.
+* Completed U.S. Navy Technical training in electronics, AC/DC circuits, underwater acoustics, and test equipment and other devices; served as a Navy SONAR Technician and rescue swimmer.
+
+
+Education
+University of Colorado Colorado Springs (UCCS), Colorado Springs, CO        
+Graduation December 2020
+Bachelor of Science, Computer Engineering
+
+
+References
+Available upon request.

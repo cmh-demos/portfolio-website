@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C. Michael Harrington - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f4ff;
+            color: #333;
+        }
+        header {
+            background-color: #6a0dad;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #4b0082;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        nav a:hover {
+            color: #ddd;
+        }
+        section {
+            padding: 2rem;
+            margin: 1rem auto;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(106, 13, 173, 0.1);
+        }
+        h2 {
+            border-bottom: 2px solid #6a0dad;
+            padding-bottom: 0.5rem;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #6a0dad;
+            color: white;
+        }
+        section {
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+        #backToTop:hover {
+            background-color: #4b0082;
+        }
+        .skill {
+            margin-bottom: 1rem;
+        }
+        .skill span {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .progress-bar {
+            background: #eee;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #6a0dad, #4b0082);
+            width: 0;
+            transition: width 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>C. Michael Harrington</h1>
+        <p>Lead DevOps Engineer | Systems Engineer | Software Developer</p>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a seasoned Lead DevOps Engineer with extensive experience in cloud technologies, automation, and system reliability. With a background in Computer Engineering from the University of Colorado Colorado Springs, I have worked on diverse projects ranging from aerospace systems to enterprise solutions. My passion lies in optimizing processes, reducing downtime, and delivering high-quality software and infrastructure.</p>
+    </section>
+    <section id="skills">
+        <h2>Skills</h2>
+        <h3>Programming & Scripting</h3>
+        <div class="skill"><span>Python</span><div class="progress-bar"><div class="progress" data-width="95"></div></div></div>
+        <div class="skill"><span>BASH / Shell Scripting</span><div class="progress-bar"><div class="progress" data-width="90"></div></div></div>
+        <div class="skill"><span>JavaScript</span><div class="progress-bar"><div class="progress" data-width="80"></div></div></div>
+        <div class="skill"><span>Java</span><div class="progress-bar"><div class="progress" data-width="75"></div></div></div>
+        <div class="skill"><span>C, C++, C#</span><div class="progress-bar"><div class="progress" data-width="70"></div></div></div>
+        <div class="skill"><span>MATLAB</span><div class="progress-bar"><div class="progress" data-width="85"></div></div></div>
+        <div class="skill"><span>PowerShell, VBA, VBS, PERL</span><div class="progress-bar"><div class="progress" data-width="80"></div></div></div>
+        <h3>Cloud & Infrastructure</h3>
+        <div class="skill"><span>GCP (Compute Engine, Cloud Storage, Cloud Functions, GKE, Cloud Run, etc.)</span><div class="progress-bar"><div class="progress" data-width="95"></div></div></div>
+        <div class="skill"><span>Terraform, Ansible</span><div class="progress-bar"><div class="progress" data-width="90"></div></div></div>
+        <div class="skill"><span>Docker, Kubernetes</span><div class="progress-bar"><div class="progress" data-width="90"></div></div></div>
+        <div class="skill"><span>VMware, KVM, Nutanix, Proxmox</span><div class="progress-bar"><div class="progress" data-width="85"></div></div></div>
+        <div class="skill"><span>Monitoring: Prometheus, Grafana, Cloud Monitoring</span><div class="progress-bar"><div class="progress" data-width="85"></div></div></div>
+        <h3>Tools & Others</h3>
+        <div class="skill"><span>Git (GitLab, GitHub, BitBucket)</span><div class="progress-bar"><div class="progress" data-width="95"></div></div></div>
+        <div class="skill"><span>CI/CD: Jenkins, Concourse CI</span><div class="progress-bar"><div class="progress" data-width="90"></div></div></div>
+        <div class="skill"><span>Databases: Cloud SQL, BigQuery, Opensearch</span><div class="progress-bar"><div class="progress" data-width="80"></div></div></div>
+        <div class="skill"><span>Networking: Cisco, Juniper, Meraki</span><div class="progress-bar"><div class="progress" data-width="75"></div></div></div>
+        <div class="skill"><span>Project Management: Jira, Confluence</span><div class="progress-bar"><div class="progress" data-width="85"></div></div></div>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><a href="dashboard_project.md">Cloud Infrastructure Monitoring Dashboard</a></li>
+            <li><a href="microservices_project.md">Microservices CI/CD Pipeline Demo</a></li>
+            <li><a href="aerospace_project.md">Aerospace Data Visualization Tool</a></li>
+            <li><a href="security_project.md">GCP Security Compliance Auditor</a></li>
+            <li><a href="edge_compute_iot.md">Edge Compute IoT Platform</a></li>
+            <li><a href="devsecops_chatbot.md">DevSecOps Chatbot</a></li>
+            <li><a href="self_healing_infra.md">Self‑Healing Infrastructure Demo</a></li>
+            <li><a href="serverless_graphql.md">Serverless GraphQL API</a></li>
+            <li><a href="ai_code_review.md">AI‑Assisted Code Review Tool</a></li>
+            <li><a href="cost_prediction.md">Cloud Cost Prediction Model</a></li>
+        </ul>
+    </section>
+    <section id="experience">
+        <h2>Experience</h2>
+        <h3>Lead DevOps Engineer, Dreamscape Learn (May 2023 - August 2025)</h3>
+        <p>Led a team in designing automation pipelines, reducing system setup time by 83%, and maintaining 99.99% SLA. Migrated systems to Docker Compose and implemented code reviews reducing rework by 64%.</p>
+        <h3>Site Reliability Engineer, ABL Space Systems (April 2022 - March 2023)</h3>
+        <p>Automated software integration for launch campaigns, designed testing platforms, and migrated SSO applications to GCCH.</p>
+        <h3>Systems Engineer, Kleos Space SA (January 2021 - March 2022)</h3>
+        <p>Designed private cloud infrastructure with Kubernetes and Docker, developed mission control systems, and oversaw SDLC for DaaS solutions.</p>
+        <h3>Software Engineer, Kratos Technology and Training Solutions (May 2015 - July 2018)</h3>
+        <p>Performed orbital analysis, developed databases, and led software testing for releases.</p>
+        <h3>Electrical Engineering Intern, Colorado Springs Utilities (May 2019 - December 2020)</h3>
+        <p>Evaluated power plant failures, performed arc flash evaluations, and updated documentation.</p>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Location: Los Angeles, CA</p>
+    </section>
+    <footer>
+        <p>&copy; 2026 C. Michael Harrington</p>
+    </footer>
+    <button id="backToTop">Back to Top</button>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate progress bars on load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.progress').forEach(p => {
+                p.style.width = p.dataset.width + '%';
+            });
+        });
+    </script>
+</body>
+</html>
