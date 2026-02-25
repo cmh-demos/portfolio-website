@@ -1,9 +1,23 @@
 # Backend service base image
-FROM python:3.11-slim
+# Default template now builds a Go binary. Python example remains but is
+# no longer the primary path.
 
+# build stage
+FROM golang:1.20-alpine AS builder
 WORKDIR /app
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . /app
+COPY main.go go.mod go.sum ./
+RUN go build -o server .
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+# final stage
+FROM alpine:latest
+WORKDIR /app
+COPY --from=builder /app/server ./
+EXPOSE 8080
+CMD ["./server"]
+
+# To run Python version instead, switch base image to python:3.11-slim and
+# uncomment lines below.
+# COPY requirements.txt ./
+# RUN pip install --no-cache-dir -r requirements.txt
+# COPY . /app
+# CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]

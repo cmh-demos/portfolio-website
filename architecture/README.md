@@ -7,7 +7,7 @@ spun up quickly without duplicating effort.
 
 ## Structure
 
-- `backend/` – Python FastAPI service template with Dockerfile and utilities.
+- `backend/` – Go service template (with optional Python equivalent) and Dockerfile.  Go is now preferred for backend services due to its static binary, performance, and simplicity.
 - `frontend/` – React component library and sample app.
 - `terraform/` – Reusable Terraform modules (GCP storage, functions, IAM, etc.).
 - `ci_cd/` – GitHub Actions workflows and scripts for linting, testing, and

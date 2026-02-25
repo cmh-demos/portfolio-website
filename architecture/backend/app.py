@@ -1,7 +1,5 @@
-from fastapi import FastAPI
+// NOTE: Go is now the preferred language for backend services.
+// The Python FastAPI example remains here for reference but new development
+// should start with the Go template in `main.go`.
 
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"message": "Hello from the shared backend template"}
+# (see main.go)

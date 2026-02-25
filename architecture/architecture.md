@@ -6,7 +6,7 @@ all demo projects will consume.
 ```mermaid
 flowchart LR
     subgraph Shared
-        A[Backend Template]
+        A[Backend Template (Go preferred)]
         B[Frontend Components]
         C[Terraform Modules]
         D[CI/CD Workflows]

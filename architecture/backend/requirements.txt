@@ -1,2 +1,3 @@
+# Python dependencies are optional; Go is preferred by default.
 fastapi
 uvicorn[standard]
