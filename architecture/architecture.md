@@ -50,3 +50,51 @@ flowchart LR
 
 Each project imports or extends the shared modules instead of duplicating code.
 
+## Local Development with Docker Compose
+
+A `docker-compose.yml` has been added at the repository root to simplify
+bringing up the backend service (and eventually others) for local testing.
+
+```bash
+# build images and start all services defined in compose
+cd /home/mike/junk/my_website
+docker compose up --build
+```
+
+The backend has been expanded into a minimal framework that can power all of
+the example projects.  When running locally it exposes several endpoints:
+
+- `GET /health` – simple health check
+- `GET /projects` – returns a JSON array of supported project slugs
+- `GET /projects/{slug}` – returns a placeholder description for the named
+  project
+
+These endpoints currently emit hard‑coded placeholder data; in a real
+implementation each project would live in its own package or subservice and
+provide real logic.  For example, the `aerospace` project already supports
+
+- fetching JSON or TLE data by satellite name from the CelesTrak API
+- caching both formats in `aerospace_cache.json`
+- exposing `/projects/aerospace/data` and `/projects/aerospace/tle` for the
+  cached values plus `/fetch` variants that refresh from the upstream API
+
+The frontend uses the TLE endpoint with [satellite.js](https://github.com/shashwatak/satellite-js)
+to draw a simple orbit path on a canvas whenever the Aerospace project is
+selected.  This gives you a starting point for parsing and visualizing real
+orbital elements in the browser.
+
+The frontend has been updated to consume this API.  When you open
+<http://localhost/> it will fetch the project list and render clickable
+entries; clicking one pops open the dummy description.  CORS headers are
+allowed on the backend so the static site (served by nginx) can call the API
+on port 8080.
+
+After startup you can also hit the backend directly at <http://localhost:8080/>.
+Shutting down is as simple as `docker compose down`.
+
+The compose file currently contains only the `backend` service but you can
+extend it with a frontend, database, or any other components as the project
+grows. See the comments in `docker-compose.yml` for an example of a
+PostgreSQL service.
+
+

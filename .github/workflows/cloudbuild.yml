@@ -1,0 +1,35 @@
+name: Deploy to GCP (GitHub Actions only)
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      REGION: us-central1
+      REPO: my-repo
+    steps:
+      - uses: actions/checkout@v3
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
+      - name: Set project
+        run: |
+          gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
+      - name: Configure Docker
+        run: |
+          gcloud auth configure-docker ${REGION}-docker.pkg.dev
+      - name: Build and push backend image
+        run: |
+          docker build -t ${REGION}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${REPO}/backend:${{ github.sha }} ./architecture/backend
+          docker push ${REGION}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${REPO}/backend:${{ github.sha }}
+      - name: Deploy backend to Cloud Run
+        run: |
+          gcloud run deploy backend \
+            --image ${REGION}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${REPO}/backend:${{ github.sha }} \
+            --region ${REGION} \
+            --platform managed \
+            --allow-unauthenticated

@@ -1,0 +1,33 @@
+services:
+  backend:
+    build:
+      context: ./architecture/backend
+      dockerfile: Dockerfile
+    image: myapp-backend:latest
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    image: myapp-frontend:latest
+    ports:
+      - "80:80"
+    # this serves the static `index.html`; extend to a full React build later
+
+    # depends_on:
+    #   - backend # if the frontend needs to wait for the API
+
+# Example database service, retain for future reference
+#  db:
+#    image: postgres:15-alpine
+#    environment:
+#      POSTGRES_USER: user
+#      POSTGRES_PASSWORD: pass
+#      POSTGRES_DB: myapp
+#    volumes:
+#      - db_data:/var/lib/postgresql/data
+
+# volumes:
+#   db_data:

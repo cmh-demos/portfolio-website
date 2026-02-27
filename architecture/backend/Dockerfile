@@ -5,7 +5,13 @@
 # build stage
 FROM golang:1.20-alpine AS builder
 WORKDIR /app
-COPY main.go go.mod go.sum ./
+# copy only module definition first; go.sum will be generated in the builder
+COPY go.mod ./
+# fetch dependencies and produce go.sum inside the image
+RUN go mod tidy
+
+# now copy application source and build
+COPY main.go ./
 RUN go build -o server .
 
 # final stage

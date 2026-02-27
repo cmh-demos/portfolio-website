@@ -1,0 +1,15 @@
+# Terraform state
+architecture/terraform/.terraform/
+architecture/terraform/terraform.tfstate*
+
+# Go build
+architecture/backend/server
+
+# Node modules, if ever
+node_modules/
+
+# Docker images
+*.tar
+
+# OS files
+*.swp

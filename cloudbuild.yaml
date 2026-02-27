@@ -1,0 +1,29 @@
+# Cloud Build pipeline for building and deploying the portfolio backend (and eventually
+# frontend) to Cloud Run.
+
+substitutions:
+  _REGION: "us-central1"   # override with your preferred region
+
+steps:
+  # build backend image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', '$_REGION-docker.pkg.dev/$PROJECT_ID/my-repo/backend:$SHORT_SHA', './architecture/backend' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', '$_REGION-docker.pkg.dev/$PROJECT_ID/my-repo/backend:$SHORT_SHA' ]
+
+  # deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud run deploy backend \
+          --image $_REGION-docker.pkg.dev/$PROJECT_ID/my-repo/backend:$SHORT_SHA \
+          --region $_REGION \
+          --platform managed \
+          --allow-unauthenticated
+
+timeouts: '1200s'
+
+images:
+  - '$_REGION-docker.pkg.dev/$PROJECT_ID/my-repo/backend:$SHORT_SHA'

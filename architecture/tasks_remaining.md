@@ -5,7 +5,14 @@ architecture and support new project development.
 
 1. **Populate the templates**
    - Flesh out `backend/` with a Go service starter (health checks, config
-     management, logging); retain Python example only as a secondary option.
+     management, logging); retain Python example only as a secondary option.  
+     *Basic project routing and CORS support have been added as a placeholder
+     framework.*
+     - Added aerospace project endpoints (`/projects/aerospace/data` and
+       `/projects/aerospace/fetch`) with caching of TLE data from CelesTrak.
+     - Implemented TLE-specific endpoints (`/projects/aerospace/tle` and
+       `/projects/aerospace/tle/fetch`) and frontend orbit rendering using
+       satellite.js.
    - Add a basic React app in `frontend/` that consumes the backend and
      demonstrates the shared components.
 

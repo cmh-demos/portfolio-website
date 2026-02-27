@@ -140,18 +140,11 @@
     </section>
     <section id="projects">
         <h2>Projects</h2>
-        <ul>
-            <li><a href="dashboard_project.md">Cloud Infrastructure Monitoring Dashboard</a></li>
-            <li><a href="microservices_project.md">Microservices CI/CD Pipeline Demo</a></li>
-            <li><a href="aerospace_project.md">Aerospace Data Visualization Tool</a></li>
-            <li><a href="security_project.md">GCP Security Compliance Auditor</a></li>
-            <li><a href="edge_compute_iot.md">Edge Compute IoT Platform</a></li>
-            <li><a href="devsecops_chatbot.md">DevSecOps Chatbot</a></li>
-            <li><a href="self_healing_infra.md">Self‑Healing Infrastructure Demo</a></li>
-            <li><a href="serverless_graphql.md">Serverless GraphQL API</a></li>
-            <li><a href="ai_code_review.md">AI‑Assisted Code Review Tool</a></li>
-            <li><a href="cost_prediction.md">Cloud Cost Prediction Model</a></li>
-        </ul>
+        <p>This list is loaded from the backend API; click a name to get a
+        placeholder description or interact with the demo.
+        </p>
+        <ul id="project-list"></ul>
+        <div id="project-details" style="margin-top:1rem;"></div>
     </section>
     <section id="experience">
         <h2>Experience</h2>
@@ -174,6 +167,7 @@
         <p>&copy; 2026 C. Michael Harrington</p>
     </footer>
     <button id="backToTop">Back to Top</button>
+    <script src="/satellite.min.js"></script>
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
@@ -208,6 +202,154 @@
                 p.style.width = p.dataset.width + '%';
             });
         });
+
+        // project listing API interaction
+        function loadProjects() {
+            fetch('http://localhost:8080/projects')
+                .then(r => r.json())
+                .then(names => {
+                    const ul = document.getElementById('project-list');
+                    names.forEach(name => {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.textContent = name.replace(/_/g, ' ');
+                        a.href = '#';
+                        a.addEventListener('click', e => {
+                            e.preventDefault();
+                            loadProject(name);
+                        });
+                        li.appendChild(a);
+                        ul.appendChild(li);
+                    });
+                })
+                .catch(err => {
+                    console.error('failed to load projects', err);
+                });
+        }
+
+        function loadProject(name) {
+            fetch(`http://localhost:8080/projects/${name}`)
+                .then(r => r.json())
+                .then(data => {
+                    alert(JSON.stringify(data, null, 2));
+                })
+                .catch(err => {
+                    console.error('failed to load project', err);
+                });
+        }
+
+        window.addEventListener('load', loadProjects);
+
+        function renderOrbit(tle) {
+            console.log('renderOrbit received TLE:', tle);
+            const lines = tle.trim().split('\n').map(l => l.trim()).filter(l => l);
+            console.log('parsed lines', lines);
+            if (lines.length < 2) return;
+            // if there is a name line, skip it
+            let line1, line2;
+            if (lines.length >= 3) {
+                line1 = lines[1];
+                line2 = lines[2];
+            } else {
+                line1 = lines[0];
+                line2 = lines[1];
+            }
+            console.log('using lines', line1, line2);
+            const satrec = satellite.twoline2satrec(line1, line2);
+            const canvas = document.getElementById('orbit-canvas');
+            if (!canvas) {
+                console.warn('canvas not found');
+                return;
+            }
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            // draw Earth circle
+            ctx.beginPath();
+            ctx.arc(canvas.width/2, canvas.height/2, 50, 0, 2*Math.PI);
+            ctx.fillStyle = '#dde6f0';
+            ctx.fill();
+            ctx.strokeStyle = '#000';
+            ctx.stroke();
+            // compute points and keep bounds for automatic scaling
+            const now = new Date();
+            const pts = [];
+            for(let i=-720;i<=720;i+=10){
+                const time = new Date(now.getTime() + i*60000);
+                const pv = satellite.propagate(satrec, time);
+                if(!pv || !pv.position) continue;
+                pts.push({x: pv.position.x, y: pv.position.y});
+            }
+            console.log('computed points count', pts.length);
+            if(pts.length === 0) return;
+            // determine scale so orbit fits canvas
+            let maxcoord = 0;
+            pts.forEach(p => { maxcoord = Math.max(maxcoord, Math.abs(p.x), Math.abs(p.y)); });
+            console.log('maxcoord', maxcoord);
+            const scale = (Math.min(canvas.width, canvas.height)/2 - 60) / maxcoord;
+            console.log('scale', scale);
+            ctx.beginPath();
+            pts.forEach((p,i) => {
+                const cx = canvas.width/2 + p.x * scale;
+                const cy = canvas.height/2 - p.y * scale;
+                if(i===0) ctx.moveTo(cx, cy);
+                else ctx.lineTo(cx, cy);
+            });
+            ctx.strokeStyle = '#f00';
+            ctx.stroke();
+        }
+
+        function showAerospace() {
+            const container = document.getElementById('project-details');
+            container.innerHTML = `
+                <h3>Aerospace Data Visualization (KSM1-C)</h3>
+                <button id="fetch-aero">Fetch Latest Data</button>
+                <pre id="aero-data" style="white-space:pre-wrap;max-height:150px;overflow:auto;"></pre>
+                <canvas id="orbit-canvas" width="400" height="400" style="border:1px solid #ccc;"></canvas>
+            `;
+            const dataEl = document.getElementById('aero-data');
+            document.getElementById('fetch-aero').addEventListener('click', () => {
+                fetch('http://localhost:8080/projects/aerospace/fetch?name=KSM1-C')
+                    .then(r => r.text())
+                    .then(t => { dataEl.textContent = t; })
+                    .catch(console.error);
+                // fetch and render TLE separately
+                fetch('http://localhost:8080/projects/aerospace/tle/fetch?name=KSM1-C')
+                    .then(r => r.text())
+                    .then(tle => renderOrbit(tle))
+                    .catch(console.error);
+            });
+
+            // load cached data if present
+            fetch('http://localhost:8080/projects/aerospace/data?name=KSM1-C')
+                .then(r => {
+                    if (r.ok) return r.text();
+                    throw new Error('no cache');
+                })
+                .then(t => {
+                    dataEl.textContent = t;
+                    // if cached entry includes TLE, fetch it
+                    fetch('http://localhost:8080/projects/aerospace/tle?name=KSM1-C')
+                        .then(r=>r.text())
+                        .then(tle=>renderOrbit(tle))
+                        .catch(()=>{});
+                })
+                .catch(() => {});
+        }
+
+        function loadProject(name) {
+            if (name === 'aerospace') {
+                showAerospace();
+                return;
+            }
+            fetch(`http://localhost:8080/projects/${name}`)
+                .then(r => r.json())
+                .then(data => {
+                    alert(JSON.stringify(data, null, 2));
+                })
+                .catch(err => {
+                    console.error('failed to load project', err);
+                });
+        }
     </script>
 </body>
 </html>
