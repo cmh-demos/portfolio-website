@@ -2,7 +2,8 @@ name: Deploy to GCP (GitHub Actions only)
 
 on:
   push:
-    branches: [main]
+    branches: ['**']   # run on any branch; adjust if you prefer to limit to main
+  workflow_dispatch:    # manual trigger available
 
 jobs:
   deploy:

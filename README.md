@@ -65,7 +65,10 @@ mechanisms are provided:
    - The workflow at `.github/workflows/cloudbuild.yml` will trigger on every
      push to `main` and is the *only* supported deployment channel.
 1. **Trigger a build**
-   - Push a commit to `main` and wait for the action to run.
+   - Push a commit to any branch (e.g. your feature branch) or merge to
+     `main`; the workflow is configured to run on every push to the repo and
+     can also be started manually via the **Actions** tab or the
+     `workflow_dispatch` trigger.
    - Confirm the backend receives traffic at the URL from Terraform output.
    - Manual `gcloud`/`cloudbuild` commands are permitted only for local proof‑
      of‑concept work and are **not** used for production deployments.
